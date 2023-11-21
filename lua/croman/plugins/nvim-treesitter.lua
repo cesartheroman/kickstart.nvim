@@ -28,6 +28,7 @@ return {
           -- defaults
           'vim',
           'lua',
+          'help',
           --web dev
           'html',
           'css',

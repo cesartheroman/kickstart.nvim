@@ -1,24 +1,30 @@
 return {
-  "ThePrimeagen/harpoon",
+  'ThePrimeagen/harpoon',
   dependencies = {
-    "nvim-lua/plenary.nvim",
+    'nvim-lua/plenary.nvim',
   },
   config = function()
     -- set keymaps
+    local mark = require 'harpoon.mark'
+    local ui = require 'harpoon.ui'
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set(
-      "n",
-      "<leader>hm",
-      "<cmd>lua require('harpoon.mark').add_file()<cr>",
-      { desc = "Mark file with harpoon" }
-    )
-    keymap.set("n", "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { desc = "Go to next harpoon mark" })
-    keymap.set(
-      "n",
-      "<leader>hp",
-      "<cmd>lua require('harpoon.ui').nav_prev()<cr>",
-      { desc = "Go to previous harpoon mark" }
-    )
+    -- For adding file and opening up Harpoon UI
+    keymap.set('n', '<leader>a', mark.add_file, { desc = 'Add file to Harpoon' })
+    keymap.set('n', '<leader>h', ui.toggle_quick_menu)
+
+    -- For navigating through Harpooned files
+    keymap.set('n', '<C-i>', function()
+      ui.nav_file(1)
+    end)
+    keymap.set('n', '<C-o>', function()
+      ui.nav_file(2)
+    end)
+    keymap.set('n', '<C-p>', function()
+      ui.nav_file(3)
+    end)
+    keymap.set('n', '<C-y>', function()
+      ui.nav_file(4)
+    end)
   end,
 }

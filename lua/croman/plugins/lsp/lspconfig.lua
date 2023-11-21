@@ -66,8 +66,8 @@ return {
       end, opts)
 
       -- Buffer Diagnostics
-      opts.desc = 'Show buffer diagnostics'
-      keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
+      -- opts.desc = 'Show buffer diagnostics'
+      -- keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = 'Go to previous diagnostic'
       keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
