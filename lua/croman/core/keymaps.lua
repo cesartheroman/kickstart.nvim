@@ -12,12 +12,6 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Diagnostic keymaps
--- keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = '[S]earch [D]iagnostics' })
--- keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = '[D]iagnostics [L]ist' })
--- keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
--- keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-
 -- [[ Josean's Keymaps ]]
 -- use jk to exit insert mode
 keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode with jk' })
@@ -34,6 +28,17 @@ keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- move up while keeping cursor in middle of page
 keymap.set('n', '<C-u>', '<C-u>zz')
+
+--keep J in place
+keymap.set('n', 'J', 'mzJ`z')
+
+--allow search terms to stay in the middle
+keymap.set('n', 'n', 'nzzzv')
+keymap.set('n', 'N', 'Nzzzv')
+
+-- move block of text together
+keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- [[ NvChad Keymaps ]]
 -- Insert Mode
@@ -80,3 +85,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- Diagnostic keymaps
+-- keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = '[S]earch [D]iagnostics' })
+-- keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = '[D]iagnostics [L]ist' })
+-- keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+-- keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })

@@ -23,7 +23,7 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
@@ -34,10 +34,9 @@ vim.o.termguicolors = true
 
 -- [[ Josean Options ]]
 local opt = vim.opt -- for conciseness
-
 -- line numbers
-opt.relativenumber = true -- show relative line numbers
-opt.number = true -- shows absolute line number on cursor line (when relative number is on)
+opt.relativenumber = true
+opt.number = true
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
@@ -60,3 +59,19 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- [[ Prime's Options ]]
+opt.smartindent = true
+
+-- don't create backups, let undotree handle this
+opt.backup = false
+opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
+opt.undofile = true
+
+-- incremental search
+opt.incsearch = true
+
+-- never have less than 8 lines as scroll
+opt.scrolloff = 8
+
+opt.colorcolumn = '80'
