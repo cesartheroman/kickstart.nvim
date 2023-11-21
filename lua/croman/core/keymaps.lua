@@ -59,8 +59,8 @@ keymap.set('n', 'sx', '<cmd>close<CR>', { desc = 'Close current split' })
 -- Tab management
 keymap.set('n', '<leader>to', ':tabnew<CR>', { desc = 'Open new tab' })
 keymap.set('n', '<leader>tx', ':tabclose<CR>', { desc = 'Close current tab' })
-keymap.set('n', '<leader>tn', ':tabn<CR>', { desc = 'Go to next tab' })
-keymap.set('n', '<leader>tp', ':tabp<CR>', { desc = 'Go to prev tab' })
+keymap.set('n', '<Tab>', ':tabn<CR>', { desc = 'Go to next tab' })
+keymap.set('n', '<S-Tab>', ':tabp<CR>', { desc = 'Go to prev tab' })
 keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current buffer in new tab' })
 
 -- Copy all
