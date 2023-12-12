@@ -75,3 +75,16 @@ opt.incsearch = true
 opt.scrolloff = 8
 
 opt.colorcolumn = '80'
+
+-- wrap text
+opt.wrap = true
+
+-- match indent on line break
+opt.breakindent = true
+
+-- line break on whole words
+opt.linebreak = true
+
+-- spell check
+opt.spelllang = 'en_us'
+opt.spell = true

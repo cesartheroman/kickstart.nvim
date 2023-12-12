@@ -9,6 +9,9 @@ return {
     -- import lspconfig plugin
     local lspconfig = require 'lspconfig'
 
+    -- import lspconfig util
+    local util = require 'lspconfig/util'
+
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
@@ -66,9 +69,6 @@ return {
       end, opts)
 
       -- Buffer Diagnostics
-      -- opts.desc = 'Show buffer diagnostics'
-      -- keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
-
       opts.desc = 'Go to previous diagnostic'
       keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
@@ -89,7 +89,33 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
     end
 
-    -- configure clangd server
+    -- [[Configure Servers]]
+
+    -- configure TS/JS server
+    lspconfig['tsserver'].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+
+    -- configure HTML server
+    lspconfig['html'].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+
+    -- configure CSS server
+    lspconfig['cssls'].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+
+    -- configure Tailwind server
+    lspconfig['tailwindcss'].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+
+    -- configure C++ server
     lspconfig['clangd'].setup {
       capabilities = capabilities,
       on_attach = on_attach,
@@ -101,41 +127,44 @@ return {
       on_attach = on_attach,
     }
 
-    -- configure html server
-    lspconfig['html'].setup {
+    -- configure Rust server
+    lspconfig['rust_analyzer'].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'rust' },
+      root_dir = util.root_pattern 'Cargo.toml',
+      settings = {
+        ['rust-anylzer'] = {
+          cargo = {
+            allFeatures = true,
+          },
+        },
+      },
+    }
+
+    -- configure Python server
+    lspconfig['pyright'].setup {
       capabilities = capabilities,
       on_attach = on_attach,
     }
 
-    -- configure typescript server with plugin
-    lspconfig['tsserver'].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-    }
-
-    -- configure css server
-    lspconfig['cssls'].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-    }
-
-    -- configure tailwindcss server
-    lspconfig['tailwindcss'].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-    }
-
-    -- configure prisma orm server
+    -- configure Prisma ORM server
     lspconfig['prismals'].setup {
       capabilities = capabilities,
       on_attach = on_attach,
     }
 
-    -- configure graphql language server
+    -- configure GraphQL language server
     lspconfig['graphql'].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { 'graphql', 'gql', 'svelte', 'typescriptreact', 'javascriptreact' },
+    }
+
+    -- configure MDX server
+    lspconfig['mdx_analyzer'].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
     }
 
     -- configure emmet language server
@@ -143,12 +172,6 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
-    }
-
-    -- configure python server
-    lspconfig['pyright'].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
     }
 
     -- configure lua server (with special settings)

@@ -56,17 +56,17 @@ keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Window down' })
 keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Window up' })
 
 -- Window management
-keymap.set('n', 'sv', '<C-w>v', { desc = 'Spit window vertically' })
-keymap.set('n', 'sh', '<C-w>s', { desc = 'Spit window horizontally' })
-keymap.set('n', 'se', '<C-w>=', { desc = 'Make splits equal size' })
-keymap.set('n', 'sx', '<cmd>close<CR>', { desc = 'Close current split' })
+keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Spit window vertically' })
+keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Spit window horizontally' })
+keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Make splits equal size' })
+keymap.set('n', '<leader>sx', '<cmd>close<CR>', { desc = 'Close current split' })
 
 -- Tab management
 keymap.set('n', '<leader>to', ':tabnew<CR>', { desc = 'Open new tab' })
 keymap.set('n', '<leader>tx', ':tabclose<CR>', { desc = 'Close current tab' })
+keymap.set('n', '<leader>tb', '<cmd>tabnew %<CR>', { desc = 'Open current buffer in new tab' })
 keymap.set('n', '<Tab>', ':tabn<CR>', { desc = 'Go to next tab' })
 keymap.set('n', '<S-Tab>', ':tabp<CR>', { desc = 'Go to prev tab' })
-keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current buffer in new tab' })
 
 -- Copy all
 keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { desc = 'Copy whole file' })
@@ -86,8 +86,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- Diagnostic keymaps
--- keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = '[S]earch [D]iagnostics' })
--- keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = '[D]iagnostics [L]ist' })
--- keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
--- keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+-- navigate next buffer
+keymap.set('n', '<leader>b}', ':bnext<CR>', { desc = 'Buffer next' })
+-- navigate previous buffer
+keymap.set('n', '<leader>b{', ':bprev<CR>', { desc = 'Buffer prev' })
