@@ -50,8 +50,8 @@ return {
       opts.desc = 'Hover Documentation'
       keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
-      opts.desc = 'Signature Documentation'
-      keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+      -- opts.desc = 'Signature Documentation'
+      -- keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 
       -- Lesser used LSP functionality
       opts.desc = '[G]oto [D]eclaration'

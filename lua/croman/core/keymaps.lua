@@ -23,6 +23,13 @@ keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = 'Clear search highlights' })
 keymap.set('n', 'x', '"_x"')
 
 -- [[ Prime's Keymaps ]]
+-- greatest remap ever, while in visual mode will delete what is currently highlighted and replace it with what is in the register BUT it will YANK (delete) it, so I never lose what I originally pasted
+keymap.set('x', '<leader>p', [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+keymap.set('n', '<leader>Y', [["+Y]])
+
 -- move down while keeping cursor in middle of page
 keymap.set('n', '<C-d>', '<C-d>zz')
 
@@ -87,6 +94,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- navigate next buffer
-keymap.set('n', '<leader>b}', ':bnext<CR>', { desc = 'Buffer next' })
+keymap.set('n', '<leader>b]', ':bnext<CR>', { desc = 'Buffer next' })
 -- navigate previous buffer
-keymap.set('n', '<leader>b{', ':bprev<CR>', { desc = 'Buffer prev' })
+keymap.set('n', '<leader>b[', ':bprev<CR>', { desc = 'Buffer prev' })

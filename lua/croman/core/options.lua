@@ -74,7 +74,7 @@ opt.incsearch = true
 -- never have less than 8 lines as scroll
 opt.scrolloff = 8
 
-opt.colorcolumn = '80'
+opt.colorcolumn = '150'
 
 -- wrap text
 opt.wrap = true
