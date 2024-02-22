@@ -78,6 +78,9 @@ keymap.set('n', '<S-Tab>', ':tabp<CR>', { desc = 'Go to prev tab' })
 -- Copy all
 keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { desc = 'Copy whole file' })
 
+-- Select all
+keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select whole file' })
+
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 keymap.set('x', 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = 'Dont copy replaced text' })
